@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import ListingCard from "../components/ListingCard";
 
 function Home() {
   const [sampleAPIData, setSampleAPIData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://whispering-fjord-38058.herokuapp.com/`)
+      .get(`https://whispering-fjord-38058.herokuapp.com/all-places`)
       .then(function (response) {
         if (response.data) {
           setSampleAPIData(response.data);
@@ -21,13 +22,9 @@ function Home() {
 
   return (
     <div>
-      <h1>Hello</h1>
-      {sampleAPIData.map((item, i) => (
-        <div key={i}>
-          <p> Name: {item.name}</p>
-          <p> Role: {item.role} </p>
-          <p> Pet Name: {item.pet} </p>
-        </div>
+      <h1>All Listings</h1>
+      {sampleAPIData.map((listing, i) => (
+        <ListingCard listingData={listing} key={i} />
       ))}
     </div>
   );
