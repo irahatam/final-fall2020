@@ -41,3 +41,7 @@
   max-width: 400px;
   width: 100%;
 }
+
+.PlacesCard {
+  border: 1px black solid;
+}
